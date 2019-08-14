@@ -1,0 +1,21 @@
+{
+  "name": "jat-scrudapp-test",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.1.3",
+    "@angular/core": "^8.1.3"
+  },
+  "main": "bundles/jat-scrudapp-test.umd.js",
+  "module": "fesm5/jat-scrudapp-test.js",
+  "es2015": "fesm2015/jat-scrudapp-test.js",
+  "esm5": "esm5/jat-scrudapp-test.js",
+  "esm2015": "esm2015/jat-scrudapp-test.js",
+  "fesm5": "fesm5/jat-scrudapp-test.js",
+  "fesm2015": "fesm2015/jat-scrudapp-test.js",
+  "typings": "jat-scrudapp-test.d.ts",
+  "metadata": "jat-scrudapp-test.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-margin ion-padding">
+
+  <ion-toolbar>
+    <ion-title>Users list</ion-title>
+
+    <ion-button *ngIf="!newUser" slot="end" (click)="onAddNewUser()" shape="round" color="dark" size="small">
+      Add New <ion-icon slot="end" name="person-add"></ion-icon>
+    </ion-button>
+
+    <ion-button *ngIf="newUser" slot="end" (click)="onAddNewUser()" shape="round" color="dark" size="small">
+      <ion-icon slot="start" name="arrow-back"></ion-icon> Back
+    </ion-button>
+
+    <ion-button slot="start" *ngIf="usersData.length === 0" (click)="onPullList()" shape="round" color="dark"
+      size="small">
+      Pull list <ion-icon slot="start" name="git-pull-request"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+
+
+  <div *ngIf="usersData !== null">
+    <ion-list *ngIf="!newUser">
+      <ion-item *ngFor="let user of usersData" slot="end">
+        <ion-label>{{user.name}}</ion-label>
+        <ion-label><a href="http://{{user.website}}" target="_blank">{{user.website}}</a></ion-label>
+        <!-- <a href="tel:{{user.phone}}">{{user.phone}}</a>-->
+
+        <ion-fab-button color="primary" size="small" (click)="onEdit(user.id)">
+          <ion-icon name="create"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button color="danger" size="small" (click)="onDelete(user.id)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-fab-button>
+
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+  <div *ngIf="newUser">
+    <ion-header translucent>
+      <ion-toolbar>
+        <ion-title>Add New User</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <form class="clearfix">
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label>Full Name <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="text" name="fullname"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Email address <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="email" name="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Phone number</ion-label>
+          <ion-input type="number" name="phonenumber"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Address</ion-label>
+          <ion-input placeholder="Address line 1"></ion-input>
+          <ion-input placeholder="Address line 2"></ion-input>
+          <ion-input placeholder="City"></ion-input>
+          <ion-input placeholder="State"></ion-input>
+          <ion-input placeholder="Zipcode" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>website</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-button class="">Save</ion-button>
+          <ion-button>Cancel</ion-button>
+        </ion-item>
+
+      </ion-list>
+
+    </form>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="!newUser && usersData === null"> No users data found.
+</ion-content>
+
+<!-- {{usersData | json}} -->
